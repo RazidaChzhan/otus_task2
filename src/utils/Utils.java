@@ -3,15 +3,10 @@ package utils;
 import java.util.Scanner;
 
 public class Utils {
-
-    static {
-        scanner = new Scanner(System.in);
-    }
-
-    public final static Scanner scanner;
+    public final static Scanner scanner = new Scanner(System.in);
 
     public static String readStringToLowerCase() {
-        return scanner.nextLine().trim().toLowerCase();
+        return readString().toLowerCase();
     }
 
     public static String readString() {
@@ -19,12 +14,10 @@ public class Utils {
     }
 
     public static int readInt() {
-        int number;
         while (!scanner.hasNextInt()) {
             System.out.println("Вы ввели не число. Введите число!");
             scanner.next();
         }
-        number = scanner.nextInt();
-        return number;
+        return scanner.nextInt();
     }
 }
