@@ -1,5 +1,8 @@
 import commands.Command;
 import entities.Animal;
+import entities.AnimalType;
+import factory.AnimalFactory;
+import utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +14,9 @@ public class Runner {
     private static List<Animal> animals = new ArrayList<>();
 
     public static void main(String[] args) {
-        System.out.println("Введите команду: ADD/LIST/EXIT");
         while (isExit) {
-            Scanner in = new Scanner(System.in);
-            String strCommand = in.nextLine().trim().toLowerCase();
+            System.out.println("Введите команду: ADD/LIST/EXIT");
+            String strCommand = Utils.readStringToLowerCase();
             Command command = Command.fromString(strCommand);
             switch (command) {
                 case ADD -> add();
@@ -26,17 +28,38 @@ public class Runner {
     }
 
     private static void add () {
-        System.out.println("Добавить");
+        System.out.println("Добавить животное в список (cat, dog, duck)");
+
+        AnimalFactory factory = AnimalFactory.getInstance();
+
+        String animalTypeStr = Utils.readStringToLowerCase();
+        AnimalType animalType = AnimalType.fromString(animalTypeStr);
+
+        switch (animalType) {
+            case CAT, DOG, DUCK -> {
+                var cat = factory.getAnimal(animalType);
+                animals.add(cat);
+                isExit = true;
+                System.out.println("Животное добавлено!");
+            }
+            case DEFAULT -> System.out.println("Такое животное нельзя добавить");
+        }
     }
 
     private static void list () {
-        System.out.println("Список животных");
-        for (Animal animal : animals) {
-            System.out.println(animal);
+        if(animals.isEmpty()) {
+            System.out.println("Список животных пока пуст. Добавьте хотя бы одно животное:");
+        } else {
+            System.out.println("Список животных");
+            for (Animal animal : animals) {
+                System.out.println(animal);
+            }
         }
     }
 
     private static void exit() {
         isExit = false;
+        Utils.scanner.close();
+        System.out.println("Вы вышли из программы!");
     }
 }
