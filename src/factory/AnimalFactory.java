@@ -26,12 +26,12 @@ public class AnimalFactory {
 
         System.out.println("Введите имя животного: ");
         String name = Utils.readString();
+        System.out.println("Введите цвет животного: ");
+        String color = Utils.readString();
         System.out.println("Введите возраст животного: ");
         int age = Utils.readInt();
         System.out.println("Введите вес животного: ");
         int weight = Utils.readInt();
-        System.out.println("Введите цвет животного: ");
-        String color = Utils.readString();
 
         Animal animal = null;
 

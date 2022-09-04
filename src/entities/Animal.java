@@ -84,6 +84,6 @@ public class Animal {
 
         String prefix = getPrefix(age);
         return "Привет! Меня зовут "+ name + ", мне " +
-                age + " " + prefix + ", я вешу - " + weight + "кг, мой цвет - " + color;
+                age + " " + prefix + ", я вешу - " + weight + " кг, мой цвет - " + color;
     }
 }

@@ -22,7 +22,7 @@ public class Runner {
                 case ADD -> add();
                 case LIST -> list();
                 case EXIT -> exit();
-                default -> System.out.println("Нет операции");
+                case DEFAULT -> System.out.println("Нет операции");
             }
         }
     }

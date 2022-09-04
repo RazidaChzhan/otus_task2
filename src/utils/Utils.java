@@ -18,15 +18,13 @@ public class Utils {
         return scanner.nextLine().trim();
     }
 
-    public static Integer readInt() {
-        Integer number = null;
-        try {
-            number = scanner.nextInt();
-        } catch (RuntimeException e) {
+    public static int readInt() {
+        int number;
+        while (!scanner.hasNextInt()) {
             System.out.println("Вы ввели не число. Введите число!");
-            readInt();
+            scanner.next();
         }
-
+        number = scanner.nextInt();
         return number;
     }
 }
