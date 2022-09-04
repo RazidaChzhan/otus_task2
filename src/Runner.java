@@ -37,8 +37,9 @@ public class Runner {
 
         switch (animalType) {
             case CAT, DOG, DUCK -> {
-                var cat = factory.getAnimal(animalType);
-                animals.add(cat);
+                var animal = factory.getAnimal(animalType);
+                animals.add(animal);
+                animal.say();
                 isExit = true;
                 System.out.println("Животное добавлено!");
             }
